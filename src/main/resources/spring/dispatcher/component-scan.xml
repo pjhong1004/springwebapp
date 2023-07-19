@@ -7,7 +7,29 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 	
-	<!-- component-scan의 역할: HomeController를 찾아서 @Controller를  Dispatcher한테 Controller로 인식하게 해줌  -->
-	<context:component-scan base-package="com.mycompany.springwebapp"/>
+	<!--
+	[객체 생성 관련 어노테이션 인식]
+	 @Controller, @Component 가 적용된 클래스를 찾고, IoC Container(WebApplicationContext)에서 객체를 생성시킴
+	 
+	[생성자 호출 후, 객체가 소멸되기 전에 실행할 메소드와 관련된 어노테이션 인식]
+	@PostConstructor: 생성자 호출 후에 실행할 메소드,
+	@PreDestroy: 객체가 소멸되기 전에 실행할 메소드
 	
+	[의존 객체 주입(Dependency Injection: DI)와 관련된 어노테이션 인식]
+	@Resource, @Autowired, @Inject, @Value
+	
+	[요청 경로 매핑과 관련된 어노테이션 인식]
+	@RequestMapping
+	 -->
+	<!-- component-scan의 역할: HomeController를 찾아서 @Controller를  Dispatcher한테 Controller로 인식하게 해줌  -->
+	<context:component-scan base-package="com.mycompany.springwebapp">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>
+	
+	<!-- 
+	[요청 정보를 얻거나 처리를 하기위한 어노테이션을 인식]
+	@RequestParam, @GetMapping, @PostMapping, @ModelAttribute
+	 -->
+	<mvc:annotation-driven/>
 </beans>

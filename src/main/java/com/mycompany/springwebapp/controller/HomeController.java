@@ -1,5 +1,8 @@
 package com.mycompany.springwebapp.controller;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,6 +15,20 @@ public class HomeController {
 		log.info("실행");
 	}
 	
+	@PostConstruct
+	public void method1() {
+		log.info("실행");
+	}
+	
+	@PostConstruct
+	public void method2() {
+		log.info("실행");
+	}
+	
+	@PreDestroy
+	public void method3() {
+		log.info("실행");
+	}
 	
 	//http://localhost:8080/springwebapp/ 생략
 	@RequestMapping("/")
