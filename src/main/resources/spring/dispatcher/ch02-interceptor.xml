@@ -7,9 +7,16 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<!--
-	 /resource/** 경로가 포함되어 있을 경우 /resources/ 폴더로 바로 매핑
-	주의 : resources 폴더는 WEB-INF 바깥쪽에 있어야 함(URL로 접근해야되니까)	
-	 -->
-	<mvc:resources mapping="/resources/**" location="/resources/" ></mvc:resources>
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/ch02/**"/>
+			<bean class="com.mycompany.springwebapp.interceptor.Ch02InterceptorA"/>
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/ch02/**"/>
+			<bean class="com.mycompany.springwebapp.interceptor.Ch02InterceptorB"/>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
 </beans>

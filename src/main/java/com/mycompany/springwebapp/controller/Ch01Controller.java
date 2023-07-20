@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @RequestMapping("/ch01")
 public class Ch01Controller {
-	//private static final Logger log = 
+	//private static final Logger log = LoggerFactory.getLogger(ch01Controller.class);
 	
 	@RequestMapping("/content")
 	public String content() {
