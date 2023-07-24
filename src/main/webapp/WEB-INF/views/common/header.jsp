@@ -1,4 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -22,7 +24,15 @@
 	            </a>
 	            <div>
 	               <div>
-	                     <a href="#" class="btn btn-success btn-sm">로그인</a>
+	                     <c:if test="${login == null}">
+					   		<a href="${pageContext.request.contextPath}/ch08/content" class="btn btn-success btn-sm">로그인</a>
+					      	</form>
+					     </c:if>
+					     <c:if test="${login != null}">
+					     	<a href="${pageContext.request.contextPath}/ch08/logout" class="btn btn-success btn-sm">로그아웃</a> 
+					     	<img src="${pageContext.request.contextPath}/resources/images/photo/${login.mid}.jpg" width="50" height="50"/>
+	                     </c:if>
+	                     
 	               </div>
 	            </div>
 	         </nav>
