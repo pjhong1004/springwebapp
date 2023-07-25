@@ -29,7 +29,7 @@
    </div>
 </div>
 
-<%-- <c:if test="${login != null}"> --%>
+<c:if test="${login != null}">
 	<div class="card m-2">
 	   <div class="card-header">
 	      세션 이용: 장바구니
@@ -65,5 +65,5 @@
 	   		</ul>
 	   </div>
 	</div>
-<%-- </c:if> --%>
+</c:if>
 <%@ include file="/WEB-INF/views/common/footer.jsp"%>

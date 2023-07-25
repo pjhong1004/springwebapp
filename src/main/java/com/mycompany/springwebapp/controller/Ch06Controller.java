@@ -28,7 +28,7 @@ public class Ch06Controller {
 	}
 	
 	@GetMapping("/redirect")
-	public String redirect(HttpServletRequest request, HttpSession session) throws Exception {
+	public String redirect(HttpSession session) throws Exception {
 		String userName = "홍길동";
 		//request.setAttribute("userName", "홍길동");  안됨!!
 		userName = URLEncoder.encode(userName, "UTF-8");

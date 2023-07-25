@@ -54,7 +54,7 @@
             POST 방식
          </div>
          <div class="card-body">            
-            <form class="m-2" method="post" action="method">
+            <form class="m-2" method="post" action="method" en>
                <div class="form-group">
                    <label for="bkind">bkind</label>
                    <input type="text" class="form-control" id="bkind" name="bkind" value="free">
