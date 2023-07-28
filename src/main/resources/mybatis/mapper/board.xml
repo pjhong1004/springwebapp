@@ -1,20 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mycompany.springwebapp.dao.mybatis.Ch13BoardDao">
+<mapper namespace="com.mycompany.springwebapp.dao.Ch13BoardDao">
 	
-	<!-- parameterType 제공하고싶을때!-->
-	<insert id="insert" parameterType="com.mycompany.springwebapp.dto.Ch13Board">
+	<!-- parameterType 객체를 DB에 제공하고 싶을때!-->
+	<insert id="insert" parameterType="Board">
+		<selectKey keyProperty="bno" resultType="int" order="BEFORE">
+			select seq_bno.nextval from dual
+		</selectKey>
+		
 		insert into board(bno, btitle, bcontent, mid, bdate, bhitcount)
-		values(seq_bno.nextval, #{btitle}, #{bcontent}, #{mid}, sysdate, 0)
+		values(#{bno}, #{btitle}, #{bcontent}, #{mid}, sysdate, 0)
 	</insert>
 	
 	<!-- resultType : 한 행씩 객체로 만들어서 준다, 받아오고싶을때! -->
-	<select id="selectAll" resultType="com.mycompany.springwebapp.dto.Ch13Board">
-		select bno, btitle, bcontent, mid, bdate, bhitcount, battachoname, battachsname, battachtype, battachdata
+	<!-- xml에서는 태그<> 내부에 < 시작꺽쇠를 못 넣음!!  >끝은 가능  그래서 쓰고싶으면 &lt;를 쓰던가 CDATA란 형식을 쓰면 됨 -->
+	<select id="selectByPage" parameterType="Pager" resultType="Board">
+		<![CDATA[
+		select rnum, bno, btitle, mid, bdate, bhitcount, battachoname
+		from (
+			select rownum as rnum, bno, btitle, mid, bdate, bhitcount, battachoname
+			from (
+				select bno, btitle, mid, bdate, bhitcount, battachoname
+				from board
+				order by bno desc
+			)
+			where rownum <= ${endRowNo}
+		)
+		where rnum >= ${startRowNo}
+		]]>
+	</select>
+	
+	<select id="count" resultType="int">
+		select count(*) 
 		from board
 	</select>
 	
-	<update id="updateByBno" parameterType="com.mycompany.springwebapp.dto.Ch13Board">
+	<select id="selectByBno" parameterType="int" resultType="Board">
+		select bno, btitle, bcontent, mid, bdate, bhitcount, battachoname, battachsname, battachtype, battachdata
+		from board
+		where bno=#{bno}
+	</select>
+	
+	<update id="updateByBno" parameterType="Board">
 		update board set btitle=#{btitle}, bcontent=#{bcontent}
 		where bno=#{bno}
 	</update>

@@ -65,18 +65,20 @@
 		</script>
 		
 		<style>
-					* {
+			
+		
+			* {
 			  box-sizing: border-box;
 			}
 			
-			div {
-			  display: block;
-			  animation: hue-rotate 10s linear infinite;
-			}
+			#cute {
+
+			  animation: hue-rotate 20s linear infinite;
+			} 
 			
 			.button {
 			  -webkit-font-smoothing: antialiased;
-			  background-color: #222;
+			  background-color: white;
 			  border: none;
 			  color: #fff;
 			  display: inline-block;
@@ -192,7 +194,7 @@
 		
 	</head>
 	<body>
-		<div class="d-flex flex-column vh-100">
+		<div id="cute" class="d-flex flex-column vh-100">
 	         <nav class="navbar navbar-dark bg-info text-white font-weight-bold">
 	            <a class="navbar-brand" href="${pageContext.request.contextPath}"> 
 	               <img src="${pageContext.request.contextPath}/resources/images/logo-spring.png" width="29" height="30" class="d-inline-block align-top">
@@ -215,7 +217,7 @@
 	   
 	         <div class="flex-grow-1 container-fluid">
 	            <div class="row h-100">
-	               <div class="col-md-4 p-3 bg-dark">
+	               <div class="col-md-4 p-3 bg-secondary">
 	                  <div class="h-100 d-flex flex-column">
 	                     <div class="flex-grow-1" style="height: 0px; overflow-y: auto; overflow-x: hidden;">
 	                        <%@ include file="/WEB-INF/views/common/menu.jsp" %>
