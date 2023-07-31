@@ -15,4 +15,4 @@ public interface Ch13BoardDao {
 	public int updateByBno(Ch13Board board);
 	public int deleteByBno(int bno);
 	public int count();
-	}
+}

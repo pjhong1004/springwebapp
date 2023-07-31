@@ -6,23 +6,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
-
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/ch02/**"/>
-			<bean class="com.mycompany.springwebapp.interceptor.Ch02InterceptorA"/>
-		</mvc:interceptor>
-		
-		<mvc:interceptor>
-			<mvc:mapping path="/ch02/**"/>
-			<bean class="com.mycompany.springwebapp.interceptor.Ch02InterceptorB"/>
-		</mvc:interceptor>
-		
-		<mvc:interceptor>
-			<mvc:mapping path="/**"/>
-			<mvc:exclude-mapping path="/resources/**"/>
-			<bean class="com.mycompany.springwebapp.interceptor.Ch08LoginCheckInterceptor"/>
-		</mvc:interceptor>
-	</mvc:interceptors>
+	
+	<context:property-placeholder location="classpath:properties/*.properties"/>	
 
 </beans>
