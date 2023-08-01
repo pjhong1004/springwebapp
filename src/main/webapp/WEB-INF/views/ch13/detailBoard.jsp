@@ -39,7 +39,7 @@
 								${board.battachoname}
 								
 								<!-- 첨부파일이 파일 시스템에 저장되어 있는 경우 -->
-								<c:if test="${board.battachoname != null}">
+								<c:if test="${board.battachsname != null}">
 									<a href="filedownload1?bno=${board.bno}"
 									 class="btn btn-info btn-sm ml-2">다운로드</a>
 									<img src="filedownload1?bno=${board.bno}" height="100"/>
@@ -73,9 +73,11 @@
 				</div>
 				
 				<a class="btn btn-info btn-sm mt-2" href="getBoardList">목록</a>
-				<a class="btn btn-info btn-sm mt-2" href="updateBoard?bno=${board.bno}">수정</a>
-				<a class="btn btn-info btn-sm mt-2" href="deleteBoard?bno=${board.bno}">삭제</a>
 				
+				<c:if test="${ch13login.mid == board.mid}">
+					<a class="btn btn-info btn-sm mt-2" href="updateBoard?bno=${board.bno}">수정</a>
+					<a class="btn btn-info btn-sm mt-2" href="deleteBoard?bno=${board.bno}">삭제</a>
+				</c:if>
 			</div>
 		</div>
 	</div>
